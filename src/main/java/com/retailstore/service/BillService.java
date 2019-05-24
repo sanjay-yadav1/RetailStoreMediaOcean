@@ -23,6 +23,7 @@ public class BillService {
 		return null;
 	}
 	
+	@Transactional
 	public Bill createBill(Bill bill) {
 		logger.info("Creating bill = " + bill);
 		Bill billData = billRepo.save(bill);
@@ -31,20 +32,24 @@ public class BillService {
 
 	}
 
+	@Transactional
 	public Bill getBillById(Long id) {
 		return billRepo.findOne(id);
 	}	
 
+	@Transactional
 	public Product addScanProduct(ProductVo productVo, String billId) {
 		// TODO This method will add product to bill which can be used later to generate bill.
 		//Here we will write logic to add new scan product to bill
 		return null;
 	}
 	
+	@Transactional
 	public void removeProduct(ProductVo productVo, String billId) {
 		// TODO This method will remove product from bill which can be used later to generate bill.
 	}
 	
+	@Transactional
 	public Iterable<Bill> getAllBills() {
 		Iterable<Bill> bill = billRepo.findAll();
 		logger.info("Fetched data for bills");
