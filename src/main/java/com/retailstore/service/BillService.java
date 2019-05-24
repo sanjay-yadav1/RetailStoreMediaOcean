@@ -18,18 +18,17 @@ public class BillService {
 	
 	final Logger logger = LogManager.getLogger(getClass());	
 
-	public Bill createBill(Bill bill) {
-		logger.info("Create bill progress = " + bill);
-		Bill bill1 = billRepo.save(bill);
-		logger.info("Created bill with id = " + bill1.getId());
-		return bill1;
-
+	public Product getProductByScanCode(String scanCode) {
+		// TODO Logic to fetch product based on scan code of item
+		return null;
 	}
+	
+	public Bill createBill(Bill bill) {
+		logger.info("Creating bill = " + bill);
+		Bill billData = billRepo.save(bill);
+		logger.info("Created bill with id = " + billData.getId());
+		return billData;
 
-	public Iterable<Bill> getAllBills() {
-		Iterable<Bill> bill = billRepo.findAll();
-		logger.info("returning all products");
-		return bill;
 	}
 
 	public Bill getBillById(Long id) {
@@ -45,10 +44,11 @@ public class BillService {
 	public void removeProduct(ProductVo productVo, String billId) {
 		// TODO This method will remove product from bill which can be used later to generate bill.
 	}
-
-	public Product getProductByScanCode(String scanCode) {
-		// TODO Logic to fetch product based on scan code of item
-		return null;
+	
+	public Iterable<Bill> getAllBills() {
+		Iterable<Bill> bill = billRepo.findAll();
+		logger.info("Fetched data for bills");
+		return bill;
 	}
 
 }
